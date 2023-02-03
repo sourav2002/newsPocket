@@ -16,17 +16,18 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<Article> newsList = [];
 
-  News newsClass = News();
+
 
   void getNews() async {
+    News newsClass = News();
     await newsClass.getArticles();
     newsList = newsClass.news;
   }
 
   @override
-  void initState() {
-    super.initState();
+  void initState()  {
     getNews();
+    super.initState();
   }
 
   @override
@@ -47,11 +48,9 @@ class _HomeState extends State<Home> {
             ),
           )),
       body: newsList.isEmpty ? const Text("list is empty", style: TextStyle(fontSize: 50),) : Container(
-        margin: const EdgeInsets.all(36),
+        margin: const EdgeInsets.only(left: 16, right: 16,top: 16),
         child: ListView.builder(
           itemCount: newsList.length,
-          shrinkWrap: true,
-          physics: const ClampingScrollPhysics(),
           itemBuilder: (context, index) {
             return ArticleCard(
               newsList[index].title,

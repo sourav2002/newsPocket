@@ -7,7 +7,7 @@ class News {
   List<Article> news = [];
 
   Article demo = Article(
-      "title",
+      "title of the article is abcv sourav ok and this",
       "description",
       "https://images.unsplash.com/photo-1661956603025-8310b2e3036d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
       "sourceName");
