@@ -23,7 +23,7 @@ class ArticleCard extends StatelessWidget {
             // ------------------background image----------
 
             ClipRRect(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(15),
                 child: CachedNetworkImage(
                   imageUrl: urlToImage,
                   height: 200,
@@ -34,9 +34,16 @@ class ArticleCard extends StatelessWidget {
             // -----------------background black filter-------------
             Container(
               height: 200,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.black54),
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.black26,
+                        Colors.black
+                      ]
+                  )
+              ),
             ),
 
             // -----------------Top content--------------
@@ -65,15 +72,16 @@ class ArticleCard extends StatelessWidget {
                         Text(
                           sourceName,
                           style: const TextStyle(
-                              fontSize: 12, color: AppColors.GRAY),
+                              fontSize: 12, color: AppColors.GRAY, fontWeight: FontWeight.bold),
                         ),
                         Container(
-                          margin: const EdgeInsets.only(left: 24),
+                          margin: const EdgeInsets.only(left: 18),
                           child: const Text(
                             "date",
                             style: TextStyle(
                               fontSize: 14,
                               color: AppColors.GRAY,
+                                fontWeight: FontWeight.bold
                             ),
                           ),
                         )
