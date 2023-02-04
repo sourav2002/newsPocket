@@ -13,8 +13,8 @@ class ArticleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const ArticleView()));
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => ArticleView(title: title, description: description, urlToImage: urlToImage, sourceName: sourceName) ));
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
@@ -34,23 +34,20 @@ class ArticleCard extends StatelessWidget {
             // -----------------background black filter-------------
             Container(
               height: 200,
-              decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.black26,
-                        Colors.black
-                      ]
-                  )
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Colors.black26, Colors.black]),
+                borderRadius: BorderRadius.circular(15),
               ),
             ),
 
             // -----------------Top content--------------
             Positioned(
-              bottom:0,
-              left:0,
-              right:0,
+              bottom: 0,
+              left: 0,
+              right: 0,
               child: Container(
                 alignment: Alignment.bottomLeft,
                 margin: const EdgeInsets.only(left: 16, bottom: 12, right: 16),
@@ -65,14 +62,18 @@ class ArticleCard extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           maxLines: 3,
                           style: const TextStyle(
-                              fontSize: 20, color: AppColors.BOLD_WHITE),
+                              fontSize: 20,
+                              color: AppColors.BOLD_WHITE,
+                              fontWeight: FontWeight.bold),
                         )),
                     Row(
                       children: [
                         Text(
                           sourceName,
                           style: const TextStyle(
-                              fontSize: 12, color: AppColors.GRAY, fontWeight: FontWeight.bold),
+                              fontSize: 12,
+                              color: AppColors.GRAY,
+                              fontWeight: FontWeight.bold),
                         ),
                         Container(
                           margin: const EdgeInsets.only(left: 18),
@@ -81,7 +82,6 @@ class ArticleCard extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 14,
                               color: AppColors.GRAY,
-                                fontWeight: FontWeight.bold
                             ),
                           ),
                         )
