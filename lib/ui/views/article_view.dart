@@ -1,8 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:news_task/components/article_card.dart';
 
-import '../consts/color.dart';
+import '../../core/consts/color.dart';
 
 class ArticleView extends StatefulWidget {
   String title;
@@ -10,11 +9,11 @@ class ArticleView extends StatefulWidget {
   String urlToImage;
   String sourceName;
   ArticleView(
-      {required this.title,
+      {super.key, required this.title,
       required this.description,
       required this.urlToImage,
       required this.sourceName,
-      super.key});
+      });
   @override
   State<ArticleView> createState() => _ArticleViewState();
 }
@@ -100,11 +99,14 @@ class _ArticleViewState extends State<ArticleView> {
                         ],
                       ),
                     ),
-                    Text(
-                      widget.description,
-                      maxLines: 4,
-                      style:
-                          const TextStyle(color: AppColors.GRAY, fontSize: 14),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Text(
+                        widget.description,
+                        maxLines: 4,
+                        style:
+                            const TextStyle(color: AppColors.GRAY, fontSize: 14),
+                      ),
                     )
                   ],
                 ),

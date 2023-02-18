@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:news_task/components/article_card.dart';
-import 'package:news_task/consts/color.dart';
-import 'package:news_task/helper/news.dart';
-import 'dart:developer';
+import 'package:news_task/ui/widgets/article_card.dart';
+import '../../core/consts/color.dart';
 
-import 'package:news_task/models/article_model.dart';
+
+import 'package:news_task/core/models/article_model.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -14,20 +13,18 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<Article> newsList = [];
+  List<ArticleModel> newsList = [];
 
-
-
-  void getNews() async {
-    News newsClass = News();
-    await newsClass.getArticles();
-    newsList = newsClass.news;
-  }
+  // void getNews() async {
+  //   News newsClass = News();
+  //   await newsClass.getArticles();
+  //   newsList = newsClass.news;
+  // }
 
   @override
   void initState()  {
-    getNews();
     super.initState();
+    // getNews();
   }
 
   @override
@@ -44,10 +41,12 @@ class _HomeState extends State<Home> {
                   letterSpacing: 3,
                   fontWeight: FontWeight.bold,
                   fontSize: 29,
-                  color: Color(0xFFffffff)),
+                  color: Color(0xFFffffff)
+              ),
             ),
           )),
-      body: newsList.isEmpty ? const Text("list is empty", style: TextStyle(fontSize: 50),) : Container(
+      body: newsList.isEmpty ? const Text("List is Empty", style: TextStyle(fontSize: 30, color: Colors.red, ),) :
+      Container(
         margin: const EdgeInsets.only(left: 16, right: 16,top: 16),
         child: ListView.builder(
           itemCount: newsList.length,
@@ -56,7 +55,7 @@ class _HomeState extends State<Home> {
               newsList[index].title,
               newsList[index].description,
               newsList[index].urlToImage,
-              newsList[index].sourceName,
+              newsList[index].source,
             );
           },
         ),

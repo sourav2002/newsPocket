@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:news_task/consts/color.dart';
-import 'package:news_task/views/article_view.dart';
+import '../../core/consts/color.dart';
+import 'package:news_task/ui/views/article_view.dart';
 
 class ArticleCard extends StatelessWidget {
   final String title, description, urlToImage, sourceName;
