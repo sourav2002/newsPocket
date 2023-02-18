@@ -4,9 +4,9 @@ import '../../core/consts/color.dart';
 import 'package:news_task/ui/views/article_view.dart';
 
 class ArticleCard extends StatelessWidget {
-  final String title, description, urlToImage, sourceName;
-  const ArticleCard(
-      this.title, this.description, this.urlToImage, this.sourceName,
+  final String title, description, content, urlToImage, sourceName, publishedAt;
+  const ArticleCard(this.title, this.description, this.content, this.urlToImage,
+      this.sourceName, this.publishedAt,
       {super.key});
 
   @override
@@ -15,10 +15,13 @@ class ArticleCard extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => ArticleView(
-                title: title,
-                description: description,
-                urlToImage: urlToImage,
-                sourceName: sourceName)));
+                  title: title,
+                  description: description,
+                  content: content,
+                  urlToImage: urlToImage,
+                  sourceName: sourceName,
+                  publishedAt: publishedAt,
+                )));
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
@@ -81,9 +84,9 @@ class ArticleCard extends StatelessWidget {
                         ),
                         Container(
                           margin: const EdgeInsets.only(left: 18),
-                          child: const Text(
-                            "date",
-                            style: TextStyle(
+                          child: Text(
+                            publishedAt,
+                            style: const TextStyle(
                               fontSize: 14,
                               color: AppColors.GRAY,
                             ),

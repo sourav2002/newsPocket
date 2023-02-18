@@ -6,14 +6,18 @@ import '../../core/consts/color.dart';
 class ArticleView extends StatefulWidget {
   String title;
   String description;
+  String content;
   String urlToImage;
   String sourceName;
+  String publishedAt;
   ArticleView(
-      {super.key, required this.title,
+      {super.key,
+      required this.title,
       required this.description,
+      required this.content,
       required this.urlToImage,
       required this.sourceName,
-      });
+      required this.publishedAt});
   @override
   State<ArticleView> createState() => _ArticleViewState();
 }
@@ -47,24 +51,7 @@ class _ArticleViewState extends State<ArticleView> {
               ),
             ),
 
-            Positioned(
-              top: 15,
-              left: 15,
-              child: InkWell(
-                onTap: (){
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  height: 20,
-                  width: 20,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color:Colors.grey.withOpacity(0.3),
-                  ),
-                  child: const Icon(Icons.arrow_back,color: Colors.white,size:32 ,),
-                ),
-              ),
-            ),
+
 
             // -----------------Top content--------------
             Positioned(
@@ -103,9 +90,9 @@ class _ArticleViewState extends State<ArticleView> {
                           ),
                           Container(
                             margin: const EdgeInsets.only(left: 18),
-                            child: const Text(
-                              "date",
-                              style: TextStyle(
+                            child: Text(
+                              widget.publishedAt,
+                              style: const TextStyle(
                                 fontSize: 20,
                                 color: AppColors.BOLD_WHITE,
                               ),
@@ -117,13 +104,36 @@ class _ArticleViewState extends State<ArticleView> {
                     SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Text(
-                        widget.description,
-                        maxLines: 4,
-                        style:
-                            const TextStyle(color: AppColors.GRAY, fontSize: 14),
+                        widget.content,
+                        style: const TextStyle(
+                            color: AppColors.GRAY, fontSize: 14),
                       ),
                     )
                   ],
+                ),
+              ),
+            ),
+
+            // ------- back button ------------
+            Positioned(
+              top: 15,
+              left: 15,
+              child: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  height: 20,
+                  width: 20,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.grey.withOpacity(0.3),
+                  ),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                    size: 32,
+                  ),
                 ),
               ),
             ),

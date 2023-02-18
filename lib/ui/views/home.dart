@@ -15,7 +15,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -48,11 +47,12 @@ class _HomeState extends State<Home> {
               itemCount: news.length,
               itemBuilder: (context, index) {
                 return ArticleCard(
-                  news[index].title,
-                  news[index].description,
-                  news[index].urlToImage,
-                  news[index].source,
-                );
+                    news[index].title,
+                    news[index].description,
+                    news[index].content,
+                    news[index].urlToImage,
+                    news[index].source,
+                    news[index].publishedAt);
               },
             );
           }
