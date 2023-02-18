@@ -123,8 +123,8 @@ class _ArticleViewState extends State<ArticleView> {
                   Navigator.pop(context);
                 },
                 child: Container(
-                  height: 20,
-                  width: 20,
+                  height: 40,
+                  width: 40,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.grey.withOpacity(0.3),
