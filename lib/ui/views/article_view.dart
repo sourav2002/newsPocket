@@ -47,8 +47,23 @@ class _ArticleViewState extends State<ArticleView> {
               ),
             ),
 
-            GestureDetector(
-              onTap: () {},
+            Positioned(
+              top: 15,
+              left: 15,
+              child: InkWell(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  height: 20,
+                  width: 20,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color:Colors.grey.withOpacity(0.3),
+                  ),
+                  child: const Icon(Icons.arrow_back,color: Colors.white,size:32 ,),
+                ),
+              ),
             ),
 
             // -----------------Top content--------------

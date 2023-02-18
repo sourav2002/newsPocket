@@ -13,8 +13,12 @@ class ArticleCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => ArticleView(title: title, description: description, urlToImage: urlToImage, sourceName: sourceName) ));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => ArticleView(
+                title: title,
+                description: description,
+                urlToImage: urlToImage,
+                sourceName: sourceName)));
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 24),
